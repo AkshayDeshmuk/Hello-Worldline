@@ -1,0 +1,49 @@
+﻿@using WorldlineServiceReference
+@model PopulationInfo
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Worldline Population Information</h1>
+
+<form asp-action="Index">
+    <label class="control-label">Enter the PinCode:</label>
+    <input type="text" name="pincode" class="form-control" />
+    <br />
+    <input type="submit" value="View population Information" class="btn btn-primary" />
+</form>
+@if (Model != null)
+{
+    <h5>Thank you for your interest in our population service</h5>
+    <br />
+
+    var total =@Model.ChildrenCount + @Model.MaleCount + @Model.FemaleCount;
+  
+    <h4>The Total Population for Pincode @Model.PinCode is @total.ToString("#,##0.###") </h4>
+    <br />
+    
+    <table border=1 class=table bgcolor="lightblue">
+        <tr>
+            <th>Male</th>
+            <th>Female</th>
+            <th>Children</th>
+        </tr>
+        <tr>
+            <td>@Model.FemaleCount.ToString("#,##0.###")</td>
+            <td>@Model.MaleCount.ToString("#,##0.###")</td>
+            <td>@Model.ChildrenCount.ToString("#,##0.###")</td>
+        </tr>
+    
+    </table>
+    
+}
+
+
+
+
+
+
+
+
+
